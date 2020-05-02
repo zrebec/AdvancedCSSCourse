@@ -1,10 +1,10 @@
 {
-    "workbench.colorTheme": "Oceanic Next (dimmed bg)",
+    "workbench.colorTheme": "Material Theme Darker High Contrast",
     "files.autoSave": "onFocusChange",
     "editor.minimap.enabled": true,
     "workbench.statusBar.visible": true,
     "workbench.activityBar.visible": true,
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": true,
   
     "workbench.colorCustomizations": {
       "statusBar.background": "#333333",
@@ -20,5 +20,15 @@
     "colorize.colorized_variables": [
     
         "CSS"
+    ],
+    "cSpell.words": [
+      "Everton",
+      "Matchweek",
+      "Natours",
+      "Watford",
+      "appid",
+      "mixins",
+      "openweathermap",
+      "orangered"
     ]
   }
