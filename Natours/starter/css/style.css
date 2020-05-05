@@ -4,8 +4,7 @@ $color-primary: #06a;
 $color-primary-light: rgb(87, 169, 224);
 $color-primary-dark: rgb(1, 46, 77);
 */
-*,
-*::after,
+* *::after,
 *::before {
   padding: 0;
   margin: 0;
@@ -21,124 +20,14 @@ $color-primary-dark: rgb(1, 46, 77);
 */
 html {
   /* 
-		Here we choose absolute value in. This means 1rem means 62.5% of 16px exactly.
-		If you remember, 16px is default font size for most browsers with default settings
-	*/
+    Here we choose absolute value in. This means 1rem means 62.5% of 16px exactly.
+    If you remember, 16px is default font size for most browsers with default settings
+    */
   font-size: 62.5%; }
 
 body {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  line-height: 1.7;
-  color: #777;
-  /*padding: 30px;*/
-  /* Add some padding to entire webpage because we want border background color borders. But beware, padding property is not inherited */
-  /*
-		recalculated to relative units. If you remember, padding it's computed by font-size: in root element 
-	*/
-  padding: 3rem;
   /* we moved box-sizing into body instead of universal selector */
   box-sizing: border-box; }
-
-.header {
-  height: 95vh;
-  /* 95% of viewport (window size) */
-  /* 
-        background properties:
-        1. background color or gradient in our case with some alpha
-        2. url to image
-        3. repeat / repeat-x / repeat-y / usually no-repeat for cover 
-        This is not-needed always for cover images but better to have it
-        4. Vertical position. top means that top of the image stays in top of viewport
-        5. Horizontal position. center means that center image will stay in viewport
-        6. Cover means cover image
-    */
-  background: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg) no-repeat top center/cover;
-  /* Relative position to body (logo will be more padded) */
-  position: relative;
-  /* 
-            Clip path cases clip of some background
-            Coordinates it's a points in clockwise direction (like border, margin od padding)
-            Good resource for that: https://bennettfeely.com/clippy/
-        */
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  /* Triangle for fun */
-  /*clip-path: polygon(0 0, 100% 50%, 100% 50%, 0 100%);*/ }
-
-/* Adding logo */
-.header__logo-box {
-  /* This is absolute position relative to header */
-  /* If header hasn't position relative, logo will be padded inherited from body
-       and from header element */
-  position: absolute;
-  top: 4rem;
-  left: 4rem; }
-
-.header__logo {
-  height: 3.5rem; }
-
-/* 
-    This is incorrect path for centering box (better is flex box, but it will be later) 
-    For now is enough and transform: translate is interesting
-*/
-.header__text-box {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  /* This translate minus our text about 50% of top and left */
-  transform: translate(-50%, -50%);
-  /* 
-        Centering texts we can do only in block elements. This case that our button
-        will be centered because we changes behavior to inline-block 
-    */
-  text-align: center; }
-
-/* Main heading styles */
-.heading-primary {
-  color: #fff;
-  text-transform: uppercase;
-  /* 
-        The backface-visibility: property defines whenever or not the back face of an element
-        should be visible facing the user.
-
-        The back face of an element mirror image of front face being displayed.
-
-        The property is useful when an element is rotates. It let's you choose if the user
-        see the face or not.
-    */
-  backface-visibility: hidden;
-  /* Some white space after heading */
-  margin-bottom: 6rem; }
-
-/* <span> element is usually inline. We want the change behavior for title and subtitle */
-/* Recommend you inspect this in developer console */
-.heading-primary--main {
-  display: block;
-  font-size: 6rem;
-  font-weight: 400;
-  letter-spacing: 3.5rem;
-  /* Space between letters */
-  /* Make animation by defined in @keyframes annotation below */
-  animation-name: moveInLeft;
-  /* Name of @keyframes animation name */
-  animation-duration: 1s;
-  /* Animation takes 2.2s */
-  /* Not using in this practice, just for learning
-    /*animation-delay: 1s;*/
-  /* Delay before animation start will be 1s */
-  /*animation-iteration-count: 2;*/
-  /* The animation will be provided 3 times */
-  /* Animation start faster and then slowing down */
-  /* More info: https://www.w3schools.com/cssref/css3_pr_animation-timing-function.asp */
-  animation-timing-function: ease-out; }
-
-.heading-primary--subtitle {
-  display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 1.75rem;
-  /* Opposite animation as heading */
-  animation: moveInRight 1s ease-out; }
 
 /* 
     Keyframes is something new in CSS for me. 
@@ -155,8 +44,8 @@ body {
     /* Starting transform right to left */ }
   80% {
     /* 
-        	In state out text will slide a bit more to right than final position and in 100% returns back
-         */
+        In state out text will slide a bit more to right than final position and in 100% returns back
+      */
     transform: translateX(2rem); }
   100% {
     opacity: 1;
@@ -173,8 +62,8 @@ body {
     /* Starting transform right to left */ }
   80% {
     /* 
-            In state out text will slide a bit more to right than final position and in 100% returns back
-         */
+              In state out text will slide a bit more to right than final position and in 100% returns back
+           */
     transform: translateX(-2rem); }
   100% {
     opacity: 1;
@@ -190,88 +79,226 @@ body {
     transform: translateX(0);
     /* Initial start position. In this case it will be final state */ } }
 
-/* Thi link is pseudo class like after, before, etc.. Look in LINKS.md for more */
-.btn:link,
-.btn:visited {
+body {
+  /* 
+    Think like font-family or line-height you don't need as variables because
+    this things usually defines only at once
+  */
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #777;
+  /*padding: 30px;*/
+  /* Add some padding to entire webpage because we want border background color borders. But beware, padding property is not inherited */
+  /*
+		recalculated to relative units. If you remember, padding it's computed by font-size: in root element 
+  */
+  padding: 3rem; }
+
+/* Main heading styles */
+.heading-primary {
+  color: #fff;
   text-transform: uppercase;
-  text-decoration: none;
-  padding: 1.5rem 4rem;
-  border-radius: 10rem;
-  /* In normal case link is an inline element and may hover our text. We should change behavior */
-  display: inline-block;
   /* 
-        Shorten write of animation to button.All is shorthand for all animation properties 
-        which were used before separated (like animation-timing-function)
+          The backface-visibility: property defines whenever or not the back face of an element
+          should be visible facing the user.
+  
+          The back face of an element mirror image of front face being displayed.
+  
+          The property is useful when an element is rotates. It let's you choose if the user
+          see the face or not.
+      */
+  backface-visibility: hidden;
+  /* Some white space after heading */
+  margin-bottom: 6rem;
+  /* <span> element is usually inline. We want the change behavior for title and subtitle */
+  /* Recommend you inspect this in developer console */ }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    /* Space between letters */
+    /* Make animation by defined in @keyframes annotation below */
+    animation-name: moveInLeft;
+    /* Name of @keyframes animation name */
+    animation-duration: 1s;
+    /* Animation takes 2.2s */
+    /* Not using in this practice, just for learning
+      /*animation-delay: 1s;*/
+    /* Delay before animation start will be 1s */
+    /*animation-iteration-count: 2;*/
+    /* The animation will be provided 3 times */
+    /* Animation start faster and then slowing down */
+    /* More info: https://www.w3schools.com/cssref/css3_pr_animation-timing-function.asp */
+    animation-timing-function: ease-out; }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    /* Opposite animation as heading */
+    animation: moveInRight 1s ease-out; }
+
+.btn {
+  /* Thi link is pseudo class like after, before, etc.. Look in LINKS.md for more */
+  /* Cursor over the button */
+  /* Cursor clocked to button */
+  /* This pseudo class is after the button */ }
+  .btn:link, .btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    border-radius: 10rem;
+    /* In normal case link is an inline element and may hover our text. We should change behavior */
+    display: inline-block;
+    /* 
+          Shorten write of animation to button.All is shorthand for all animation properties 
+          which were used before separated (like animation-timing-function)
+      */
+    transition: all 0.2s;
+    position: relative;
+    font-size: 1.6rem; }
+  .btn:hover {
+    /* Button move -.3rem to up (reason why negative value) */
+    transform: translateY(-0.3rem);
+    /* 
+          Box shadow has many parameters. The first is X direction shadow at tom, second is X on bottom.
+          Third is blur of shadow. Fourth is color (with alpha opacity in our case)
+  
+          Otherwise, in  Sass you can use hex color code as variable. But this 
+          works only in Sass. In normal CSS you must give 3 separate colors and not
+          just hex code
+      */
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5);
+    /* Like in in btn-after but this cases only when button is mouse over */ }
+    .btn:hover::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      /* Opacity zero is trick to scaling. We will see just borders like ghosts */
+      opacity: 0; }
+  .btn:active {
+    transform: translateY(-0.1rem);
+    /* 
+          Smaller values than in hover after clicks makes that button after click will look
+          closer to user.
+          
+          Ff you're writing value with leading zero, it's a good css practice write it's without
+          zero. Of course, it will works with 0.5rem to, but .5rem is more understandable for more
+          css programmers.
+      */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5); }
+  .btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* 
+          This put our button top over all elements with default value. Otherwise text in button will be
+          hidden beside background because we're using absolute position. And you remember, the parent is
+          btn. More negative value is more for top
+      */
+    z-index: -1;
+    /* And set transition speed for after hover::after using */
+    transition: all 0.4s; }
+  .btn--white {
+    background: #fff;
+    color: #777; }
+    .btn--white::after {
+      background: #fff; }
+  .btn--animated {
+    /* New value. The last value is animation delay */
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    /* 
+            The animation-fill-mode property specifies a style for the element when the animation 
+            is not playing (before it starts, after it ends, or both).
+    
+            Backwards means that 0% will be automatically applied before animation starts. That means
+            0% will not be applied when animation starts. Animation then looks smoother. 
+    
+            For mor info looks at LINKS.md
+        */
+    animation-fill-mode: backwards; }
+
+.header {
+  height: 95vh;
+  /* 95% of viewport (window size) */
+  /* 
+    background properties:
+    1. background color or gradient in our case with some alpha
+    2. url to image
+    3. repeat / repeat-x / repeat-y / usually no-repeat for cover 
+    This is not-needed always for cover images but better to have it
+    4. Vertical position. top means that top of the image stays in top of viewport
+    5. Horizontal position. center means that center image will stay in viewport
+    6. Cover means cover image
     */
-  transition: all 0.2s;
+  background: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg) no-repeat top center/cover;
   position: relative;
-  font-size: 1.6rem; }
-
-/* Cursor over the button */
-.btn:hover {
-  /* Button move -.3rem to up (reason why negative value) */
-  transform: translateY(-0.3rem);
   /* 
-        Box shadow has many parameters. The first is X direction shadow at tom, second is X on bottom.
-        Third is blur of shadow. Fourth is color (with alpha opacity in our case)
+    Clip path cases clip of some background
+    Coordinates it's a points in clockwise direction (like border, margin od padding)
+    Good resource for that: https://bennettfeely.com/clippy/
     */
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5); }
-
-/* Cursor clocked to button */
-.btn:active {
-  transform: translateY(-0.1rem);
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /* Adding logo */
   /* 
-        Smaller values than in hover after clicks makes that button after click will look
-		closer to user.
-		
-		Ff you're writing value with leading zero, it's a good css practice write it's without
-		zero. Of course, it will works with 0.5rem to, but .5rem is more understandable for more
-		css programmers.
-    */
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5); }
+      This is incorrect path for centering box (better is flex box, but it will be later) 
+      For now is enough and transform: translate is interesting
+    */ }
+  .header__logo_box {
+    /* This is absolute position relative to header */
+    /* If header hasn't position relative, logo will be padded inherited from body
+         and from header element */
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* 
+        Centering texts we can do only in block elements. This case that our button
+        will be centered because we changes behavior to inline-block 
+        */
+    text-align: center; }
 
-.btn--white {
-  background: #fff;
-  color: #777; }
-
-/* This pseudo class is after the button */
-.btn::after {
-  content: "";
-  display: inline-block;
-  height: 100%;
-  width: 100%;
-  border-radius: 10rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  /* 
-        This put our button top over all elements with default value. Otherwise text in button will be
-        hidden beside background because we're using absolute position. And you remember, the parent is
-        btn. More negative value is more for top
-    */
-  z-index: -1;
-  /* And set transition speed for after hover::after using */
-  transition: all 0.4s; }
-
-/* Like in in btn-after but this cases only when button is mouse over */
-.btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6);
-  /* Opacity zero is trick to scaling. We will see just borders like ghosts */
-  opacity: 0; }
-
-.btn--white::after {
-  background: #fff; }
-
-.btn--animated {
-  /* New value. The last value is animation delay */
-  animation: moveInBottom 0.5s ease-out 0.75s;
-  /* 
-        The animation-fill-mode property specifies a style for the element when the animation 
-        is not playing (before it starts, after it ends, or both).
-
-        Backwards means that 0% will be automatically applied before animation starts. That means
-        0% will not be applied when animation starts. Animation then looks smoother. 
-
-        For mor info looks at LINKS.md
-    */
-  animation-fill-mode: backwards; }
+.row {
+  max-width: 114rem;
+  background-color: #c8e6c9;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    height: 8rem;
+    background-color: orangered;
+    color: white;
+    font-weight: bold;
+    font-size: 3rem;
+    text-align: center;
+    line-height: 8rem;
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) / 3); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 6rem) / 4); }
+  .row .col-2-of-3 {
+    width: calc( 2 * ((100% - 2 * 6rem) / 3) + 6rem); }
+  .row .col-2-of-4 {
+    width: calc( 2 * ((100% - 3 * 6rem) / 4) + 6rem); }
+  .row .col-3-of-4 {
+    width: calc( 3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }

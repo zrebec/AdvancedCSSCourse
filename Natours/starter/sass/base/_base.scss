@@ -1,0 +1,31 @@
+* *::after,
+*::before {
+  padding: 0;
+  margin: 0;
+
+  /* 
+		Instead of border-box we use here inherit because border-box we moved into body element 
+		Now each element in body element inherit box-sizing property (power if inheritance)
+	*/
+  box-sizing: inherit;
+}
+
+/*
+	html selector is a root element. Ideal for setting font size and then using only 
+	relative values for that
+*/
+
+html {
+  /* 
+    Here we choose absolute value in. This means 1rem means 62.5% of 16px exactly.
+    If you remember, 16px is default font size for most browsers with default settings
+    */
+
+  // This defines what 1rem is
+  font-size: 62.5%;
+}
+
+body {
+  /* we moved box-sizing into body instead of universal selector */
+  box-sizing: border-box;
+}

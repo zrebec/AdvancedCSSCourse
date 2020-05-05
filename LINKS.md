@@ -405,7 +405,120 @@ it globally if you change anything in your page (like ```index.html``` e.g.)
 
 ### Converting our css code to Sass: Variables and Nesting
 
+in  Sass you can use hex color code as variable. But this
+works only in Sass. In normal CSS you must give 3 separate colors and not
+just hex code.
 
+```sass
+$color-black: #000;
+box-shadow: 0 1rem 2rem rgba($color-black, 0.5);
+```
+
+Things like ```font-family``` or ```line-height``` you don't need it to have as
+variables because you usually defines only once this things.
+
+## Section 5, Video 32
+
+### Implementing 7-1 architecture with Sass
+
+For directory structure, look at Section 3: Video 20 -> Architect -> 7-1 pattern.
+
+- abstracts (variables, mixins, functions)
+- base (animations, typography, utilities)
+- components (buttons)
+- layout (header, footer)
+- pages (home)
+- main.scss (including above)
+
+>In _base.scss we have typography property in html (font-size). But this defines
+>the basic font-size and defines what 1rem is. That's the reason why is it better
+>to keep it in base
+
+## Section 5, Video 33
+
+### Basic principles of responsive layout
+
+1. Fluid Grids and Layouts
+  To allow content easily adapt to the current viewport width used to browse the
+  website. Uses % rather than px for all layout-related dimensions.
+2. Flexible / Responsive images
+ Images behave differently that text content, and so we need to ensure that
+ they also adapt nicely to the current viewport
+3. Media queries
+  To change styles on certain viewport widths (breakpoints), allowing to
+  create different version of our website (using just ```min-width``` and never
+  ```max-width```. The basic principle is have done webpage for mobile and than
+  adding content or changing layout on larger output devices)
+
+#### Types of layouts in our projects
+
+- Float layouts (Natours Project)
+- Flexbox (Trillo Project)
+- CSS Grid (Nexter Project)
+
+## Section 5, Video 34
+
+Fluid responsive layout with floats. This is probably longest video in course. Here
+will be just small pieces of video. Look at your abbreviations and look vide again
+if something is not clear. Many comments are in code too.
+
+### What we learn
+
+- How to architect and build a simple grid system
+- How the attribute selectors works
+- How the ```:not``` pseudo-class works
+- How calc() works, and what's the difference between calc and simple sass
+operations
+
+Beware of using ```width``` and ```max-width```. Using rather ```max-width```
+instead of first one because it's much responsive.
+
+- ```:not``` pseudo class is negative of condition. For example
+```:not(:last-child)``` means every child expect last one
+- With ```calc()``` function in CSS you can make math operations and mix units
+which is very useful.
+
+```css
+[class^="col-"] {
+    float: left;
+
+    &:not(:last-child) {
+      margin-right: $gutter-horizontal;
+    }
+}
+
+.col-1-of-2 {
+  width: calc((100% - #{$gutter-horizontal}) / 2);
+  background-color: orangered;
+}
+```
+
+This divides 100% width of your window minus your spacing between columns and make
+2 columns with exact width.
+
+>Note in CSS functions you must using Sass variables as above with hashtag.
+
+**Be very careful** when you're using and mixing units with ```float```
+property. If float will not exact the row ```max-width``` (e.g if you forgot to
+```margin```, next row will be aside until you're using ```clear``` property.
+
+>Use clearfix mixin (look at code) to get your margin back. If you will not
+>include in your row, your row will have 0 height (without margin)
+
+The selector ```[class^="col-"]``` causes that all class with starts with name
+col will including stuff inside the selector. If you remember with ```[]```
+you can mark any attribute in element. This is DRY principle (Don't repeat yourself)
+
+>Of course, the second way is add a ``coll`` class to your every column in your
+>HTML and keep just specific properties for ```col-1-of-2```. Then your element
+>attribute will look like ```class="col col-1-of-2"``` but this is a often better
+>way to reach DRY principle.
+
+Byt the you want select any class which just contain ```col``` instead of start
+with ```col``` you can use asterisk (*) instead of (^) symbol which is start if
+you know regular expressions.
+
+For more info look at my [codepen](https://codepen.io/littleTheRabbit/pen/bGVaYWX)
 
 ## Other links (not for project)
 

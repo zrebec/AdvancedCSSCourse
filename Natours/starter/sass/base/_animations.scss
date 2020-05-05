@@ -1,0 +1,68 @@
+/* 
+    Keyframes is something new in CSS for me. 
+    It's the key frames of some animation (name of animation is after @keyframe annotation).
+    You can as many keyframes and you need. In our case we use 0% (start animation), 80% (almost end)
+    and 100% (end animation)
+*/
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+
+    /* Starting transform right to left*/
+    /* Of course, positive value will be left to right */
+    transform: translateX(-10rem); /* Starting transform right to left */
+  }
+
+  80% {
+    /* 
+        In state out text will slide a bit more to right than final position and in 100% returns back
+      */
+    transform: translateX(2rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(
+      0
+    ); /* Initial start position. In this case it will be final state */
+  }
+}
+
+/* This was a homework sed for subtitle */
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+
+    /* Starting transform right to left*/
+    /* Of course, positive value will be left to right */
+    transform: translateX(10rem); /* Starting transform right to left */
+  }
+
+  80% {
+    /* 
+              In state out text will slide a bit more to right than final position and in 100% returns back
+           */
+    transform: translateX(-2rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(
+      0
+    ); /* Initial start position. In this case it will be final state */
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(
+      0
+    ); /* Initial start position. In this case it will be final state */
+  }
+}

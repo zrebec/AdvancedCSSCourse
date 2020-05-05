@@ -1,0 +1,68 @@
+.header {
+  height: 95vh; /* 95% of viewport (window size) */
+
+  /* 
+    background properties:
+    1. background color or gradient in our case with some alpha
+    2. url to image
+    3. repeat / repeat-x / repeat-y / usually no-repeat for cover 
+    This is not-needed always for cover images but better to have it
+    4. Vertical position. top means that top of the image stays in top of viewport
+    5. Horizontal position. center means that center image will stay in viewport
+    6. Cover means cover image
+    */
+
+  background: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
+    url(../img/hero.jpg) no-repeat top center / cover;
+
+  // Relative position to body (logo will be more padded)
+  position: relative;
+
+  /* 
+    Clip path cases clip of some background
+    Coordinates it's a points in clockwise direction (like border, margin od padding)
+    Good resource for that: https://bennettfeely.com/clippy/
+    */
+
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  //Triangle for fun
+  //clip-path: polygon(0 0, 100% 50%, 100% 50%, 0 100%);
+
+  /* Adding logo */
+  &__logo_box {
+    /* This is absolute position relative to header */
+    /* If header hasn't position relative, logo will be padded inherited from body
+         and from header element */
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
+
+  &__logo {
+    height: 3.5rem;
+  }
+
+  /* 
+      This is incorrect path for centering box (better is flex box, but it will be later) 
+      For now is enough and transform: translate is interesting
+    */
+  &__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+
+    // This translate minus our text about 50% of top and left
+    transform: translate(-50%, -50%);
+
+    /* 
+        Centering texts we can do only in block elements. This case that our button
+        will be centered because we changes behavior to inline-block 
+        */
+    text-align: center;
+  }
+}

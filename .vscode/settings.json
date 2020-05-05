@@ -1,5 +1,5 @@
 {
-    "workbench.colorTheme": "Material Theme Darker High Contrast",
+    "workbench.colorTheme": "Material Theme Ocean High Contrast",
     "files.autoSave": "onFocusChange",
     "editor.minimap.enabled": true,
     "workbench.statusBar.visible": true,
@@ -23,15 +23,20 @@
     ],
     "cSpell.words": [
       "Everton",
+      "Flexbox",
       "Matchweek",
       "Natours",
+      "Nexter",
       "Saas",
+      "Trillo",
       "Watford",
       "appid",
+      "clearfix",
       "codepen",
       "minification",
       "mixins",
       "openweathermap",
-      "orangered"
+      "orangered",
+      "rgba"
     ]
   }

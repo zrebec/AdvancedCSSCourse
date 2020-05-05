@@ -1,0 +1,107 @@
+.btn {
+  /* Thi link is pseudo class like after, before, etc.. Look in LINKS.md for more */
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    border-radius: 10rem;
+
+    /* In normal case link is an inline element and may hover our text. We should change behavior */
+    display: inline-block;
+
+    /* 
+          Shorten write of animation to button.All is shorthand for all animation properties 
+          which were used before separated (like animation-timing-function)
+      */
+    transition: all 0.2s;
+    position: relative;
+    font-size: 1.6rem;
+  }
+
+  /* Cursor over the button */
+  &:hover {
+    /* Button move -.3rem to up (reason why negative value) */
+    transform: translateY(-0.3rem);
+
+    /* 
+          Box shadow has many parameters. The first is X direction shadow at tom, second is X on bottom.
+          Third is blur of shadow. Fourth is color (with alpha opacity in our case)
+  
+          Otherwise, in  Sass you can use hex color code as variable. But this 
+          works only in Sass. In normal CSS you must give 3 separate colors and not
+          just hex code
+      */
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.5);
+
+    /* Like in in btn-after but this cases only when button is mouse over */
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+
+      /* Opacity zero is trick to scaling. We will see just borders like ghosts */
+      opacity: 0;
+    }
+  }
+
+  /* Cursor clocked to button */
+  &:active {
+    transform: translateY(-0.1rem);
+
+    /* 
+          Smaller values than in hover after clicks makes that button after click will look
+          closer to user.
+          
+          Ff you're writing value with leading zero, it's a good css practice write it's without
+          zero. Of course, it will works with 0.5rem to, but .5rem is more understandable for more
+          css programmers.
+      */
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.5);
+  }
+
+  /* This pseudo class is after the button */
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    /* 
+          This put our button top over all elements with default value. Otherwise text in button will be
+          hidden beside background because we're using absolute position. And you remember, the parent is
+          btn. More negative value is more for top
+      */
+    z-index: -1;
+
+    /* And set transition speed for after hover::after using */
+    transition: all 0.4s;
+  }
+
+  &--white {
+    background: $color-white;
+    color: $color-grey-dark;
+
+    &::after {
+      background: $color-white;
+    }
+  }
+
+  &--animated {
+    /* New value. The last value is animation delay */
+    animation: moveInBottom 0.5s ease-out 0.75s;
+
+    /* 
+            The animation-fill-mode property specifies a style for the element when the animation 
+            is not playing (before it starts, after it ends, or both).
+    
+            Backwards means that 0% will be automatically applied before animation starts. That means
+            0% will not be applied when animation starts. Animation then looks smoother. 
+    
+            For mor info looks at LINKS.md
+        */
+    animation-fill-mode: backwards;
+  }
+}
