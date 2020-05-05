@@ -1,1 +1,2 @@
 .prettierignore
+Natours/starter/node_modules/**

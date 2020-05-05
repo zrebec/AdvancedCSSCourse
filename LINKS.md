@@ -278,7 +278,7 @@ Component-Driven design
 
 - Atoms
 - Molecules
-- Organisms (compotent)
+- Organisms (component)
 - Templates
 - Pages
 
@@ -339,6 +339,73 @@ Look at picture in slides
 - **Functions**: similar to mixins, with difference that they produce a value that can be used
 - **Extends**: to make different selectors inherit declarations that are common to all of them
 - **Control directives**: for writing complex code using conditionals and loops (not covered in this course)
+
+## Section 4, Video 27
+
+### Why Node.js
+
+Allows developers to write and run JavaScript code on server. Developers started using node.js to also write too to help
+with local development
+
+In this course we will using node.js as helper with local development (like Sass)
+
+### npm
+
+npm is Node Package Manager. Simple command line interface that allows developers to install and manage packages on
+their local computers. There are all kinds of open source tools, libraries and frameworks needed for modern development.
+Modern web development could simply not exist without package manager.
+
+### Installing Sass on local computer
+
+- Download node.js from <https://nodejs.org/en/download> and install it
+- Open terminal and check nodejs version via ```node -v``` to check all working
+- Move to project folder and type ```npm init```
+- Fill project info and check ```package.json``` file to check all is correct
+- Install sass via command (still in project folder) ```npm install node-sass --save-dev```
+  -- save-dev is used to save the package for development purpose. Example: unit tests, minification. (like JDK?)
+  -- save is used to save the package required for the application to run.  (like just JRE?)
+- Then you should to see dependencies in your package.json file
+- Install also jquery but not with dev tools, just ```mpm install query --save```
+- Check in node_modules for directories of modules
+
+>You can re-create node_modules directory by your ```package.json``` file via command ```npm install```
+
+In fact, we don't need jquery (that was a example with ```--save``` option). So uninstall it via command
+```npm uninstall jquery --save```
+
+## Section 4, Video 28
+
+To run node-sass in project, edit your ```package.json``` file in script section:
+
+```json
+"scripts": {
+    "compile:sass": "node-sass <input file> <output file> -w"
+  },
+```
+
+- ```w``` means watch in this case. That means if I change input file, the script will be ran
+
+then type ```npm run compile:sass``` to run your script
+
+## Section 4, Video 29
+
+Automatic re-render page if I change it (no need Go Live Server Anymore)
+
+```bash
+sudo npm install live-server -g
+```
+
+```g``` means to install globally because we want install it globally for all projects. ```sudo`` needs for authorize
+to install global```node_modules```.
+
+in command line write ```live-server``` to run it globally. And should open the window with your page and it will watch
+it globally if you change anything in your page (like ```index.html``` e.g.)
+
+## Section 5, Video 31
+
+### Converting our css code to Sass: Variables and Nesting
+
+
 
 ## Other links (not for project)
 
