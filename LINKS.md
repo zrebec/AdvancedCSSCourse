@@ -2,6 +2,10 @@
 
 ## ZTH Resources
 
+### Useful links
+
+Free video covers resource in your page: <https://coverr.co/>
+
 ### Section 2, Video 6
 
 Clip path maker: <https://bennettfeely.com/clippy/>
@@ -1048,6 +1052,51 @@ don't forget to add animation effect duration:
 If you will have a strange effect like a little shake the text at the end of
 animation you can fix this with add ```backface-visibility: hidden``` in the
 ```story__caption``` class.
+
+## Section 5, Video 44
+
+If you want add video in your page try useful link: <https://coverr.co/>
+
+Start with html in your ```section-stories``` ```<section>```
+
+```html
+<video class="bg-video__content" autoplay muted loop>
+  <source src="img/video.mp4" type="video/mp4">
+  <source src="img/video.webm" type="video/webm">
+  Your browser is not supported!
+</video>
+```
+
+- Supporting the mp4 and webm format
+- autoplay vide with autoplay attribute
+- muted video
+- loop vide
+
+Now we must edit our css:
+
+```scss
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.15;
+
+  &__content {
+    height: 100%;
+    width: 100%;
+
+    /* This cover whole section and fix the aspect ratio of object */
+    object-fit: cover;
+  }
+}
+```
+
+CSS property ```object-fit``` cover is similar like cover image background. This
+proeprty fix the aspect ratio with any object (not just a image, but video too e.g.)
+
 
 ## Other links (not for project)
 

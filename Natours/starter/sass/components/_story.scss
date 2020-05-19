@@ -2,21 +2,27 @@
   width: 75%;
   margin: 0 auto;
   box-shadow: 0 3rem 6rem rgba($color: $color-black, $alpha: 0.1);
-  background-color: $color-white;
+  background-color: rgba($color: $color-white, $alpha: 0.6);
   border-radius: 3px;
   padding: 6rem;
   padding-left: 9rem;
   font-size: $default-font-size;
+
+  /* we want skew the box */
   transform: skewX(-12deg);
 
   &__shape {
     width: 15rem;
     height: 15rem;
     float: left;
+
+    /* Building a cirlce shape with chrome and safari prefixes */
     -webkit-shape-outside: circle(50% at 50% 50%);
     shape-outside: circle(50% at 50% 50%);
     -webkit-clip-path: circle(50% at 50% 50%);
     clip-path: circle(50% at 50% 50%);
+
+    /* we do not want skew the image in the box */
     transform: translateX(-3rem) skewX(12deg);
     position: relative;
   }
@@ -29,6 +35,7 @@
   }
 
   &__text {
+    /* we do not want skew the text */
     transform: skewX(12deg);
   }
 

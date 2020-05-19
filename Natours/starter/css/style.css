@@ -182,6 +182,9 @@ body {
 .u-margin-bottom-big {
   margin-bottom: 8rem; }
 
+.u-margin-top-small {
+  margin-top: 2rem; }
+
 .u-margin-top-big {
   margin-top: 8rem; }
 
@@ -459,20 +462,23 @@ body {
   width: 75%;
   margin: 0 auto;
   box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.6);
   border-radius: 3px;
   padding: 6rem;
   padding-left: 9rem;
   font-size: 1.6rem;
+  /* we want skew the box */
   transform: skewX(-12deg); }
   .story__shape {
     width: 15rem;
     height: 15rem;
     float: left;
+    /* Building a cirlce shape with chrome and safari prefixes */
     -webkit-shape-outside: circle(50% at 50% 50%);
     shape-outside: circle(50% at 50% 50%);
     -webkit-clip-path: circle(50% at 50% 50%);
     clip-path: circle(50% at 50% 50%);
+    /* we do not want skew the image in the box */
     transform: translateX(-3rem) skewX(12deg);
     position: relative; }
   .story__img {
@@ -481,6 +487,7 @@ body {
     backface-visibility: hidden;
     transition: all 0.5s; }
   .story__text {
+    /* we do not want skew the text */
     transform: skewX(12deg); }
   .story__caption {
     position: absolute;
@@ -498,6 +505,21 @@ body {
   .story:hover .story__img {
     transform: translateX(-4rem) scale(1);
     filter: blur(3px) brightness(80%); }
+
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.15;
+  overflow: hidden; }
+  .bg-video__content {
+    height: 100%;
+    width: 100%;
+    /* This cover whole section and fix the aspect ratio of video */
+    object-fit: cover; }
 
 .header {
   height: 95vh;
@@ -591,5 +613,5 @@ body {
   margin-top: -10rem; }
 
 .section-stories {
-  background-color: #f7f7f7;
+  position: relative;
   padding: 15rem 0; }
