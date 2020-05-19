@@ -14,8 +14,8 @@
 
   background: linear-gradient(
       to right bottom,
-      rgba($color-primary-light, 0.8),
-      rgba($color-primary-dark, 0.8)
+      rgba($color-primary-light, $cover-image-transparency),
+      rgba($color-primary-dark, $cover-image-transparency)
     ),
     url(../img/hero.jpg) no-repeat top center / cover;
 
@@ -28,13 +28,14 @@
     Good resource for that: https://bennettfeely.com/clippy/
     */
 
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 
   //Triangle for fun
   //clip-path: polygon(0 0, 100% 50%, 100% 50%, 0 100%);
 
   /* Adding logo */
-  &__logo_box {
+  &__logo-box {
     /* This is absolute position relative to header */
     /* If header hasn't position relative, logo will be padded inherited from body
          and from header element */

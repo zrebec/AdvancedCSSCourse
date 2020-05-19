@@ -1,7 +1,7 @@
 .row {
   // This like 1140px but dynamically
   max-width: $grid-width;
-  background-color: #c8e6c9;
+  //background-color: #c8e6c9;
 
   // Centering block element. 0 from top and auto from left
   margin: 0 auto;
@@ -15,15 +15,15 @@
 
   [class^="col-"] {
     // Set each column dimensions and colors
-    height: 8rem;
-    background-color: orangered;
-    color: white;
+    //height: 8rem;
+    //background-color: orangered;
+    //color: white;
 
     // Set typography for each column
-    font-weight: bold;
-    font-size: 3rem;
-    text-align: center;
-    line-height: 8rem;
+    //font-weight: bold;
+    //font-size: 3rem;
+    //text-align: center;
+    //line-height: 8rem;
 
     // Set floating for each column
     float: left;

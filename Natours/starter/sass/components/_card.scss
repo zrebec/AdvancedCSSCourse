@@ -1,0 +1,214 @@
+.card {
+  //FUNCTIONALITY
+  perspective: 150rem;
+  -moz-perspective: 150rem; // This for firefox working too
+  position: relative;
+  height: nth($card, 2);
+
+  &__side {
+    height: nth($card, 2);
+    transition: all 0.8s ease; //The easy is important for animation will look smother
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: nth($card, 1);
+    backface-visibility: hidden;
+    border-radius: nth($card, 3);
+
+    // This must be implementent if you want rounded corner
+    overflow: hidden;
+    /*
+    box-shadow explain:
+    - First number is x-axis shadow
+    - Second one is y-axis shadow
+    - Third one is blur
+    - Last is the color (you should always using **rgba** and using opacity for
+    shadows)
+    */
+    box-shadow: 0 1.5rem 4rem rgba($color: $color-black, $alpha: 0.15);
+
+    &--front {
+      background-color: $color-white;
+    }
+
+    &--back {
+      transform: rotateY(180deg);
+
+      &-1 {
+        background: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        );
+      }
+
+      &-2 {
+        background: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        );
+      }
+
+      &-3 {
+        background: linear-gradient(
+          to right bottom,
+          $color-tertiary-light,
+          $color-tertiary-dark
+        );
+      }
+    }
+  }
+
+  &:hover &__side--front {
+    transform: rotateY(-180deg);
+  }
+
+  &:hover &__side--back {
+    transform: rotateY(0);
+  }
+
+  // FRONT SIDE STYLING
+  &__picture {
+    background-size: cover;
+    height: 23rem;
+    // Next property doesn't work in IE. Only Safari, Firefox and Chrome of course
+    background-blend-mode: screen;
+
+    /*
+    We have 4 inputs (4 dimensions) in example below which means:
+
+    1. Where poligon starts 0 on x axis and 0 on y axis (top side)
+    2. Where first line of polygon ends (100% on x axis and 0 on y axis)
+    3. Where second line (right side) ends (100% on x asis and 85% on y axis)
+    4. Where third line ends (0 on x axis and 100% on y axis)
+    
+    Clip path property is a morern CSS property and we shoud add webkit prefix
+    right functionality in Chrome or Safari
+    */
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+    border-top-left-radius: nth($card, 3);
+    border-top-right-radius: nth($card, 3);
+
+    &--1 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        ),
+        url(../img/nat-5.jpg);
+    }
+
+    &--2 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        ),
+        url(../img/nat-6.jpg);
+    }
+
+    &--3 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-tertiary-light,
+          $color-tertiary-dark
+        ),
+        url(../img/nat-7.jpg);
+    }
+  }
+
+  &__heading {
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: $color-white;
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+    text-align: right;
+    width: 75%;
+  }
+
+  &__heading-span {
+    padding: 1rem 1.5rem;
+    /*
+      The css property ```text-decoration-break``` with ```clone``` value copy the all decorations around text in every line of text.
+
+      For working in chrome, we need add webkit prefix
+    */
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+
+    &--1 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-secondary-light, 0.85),
+        rgba($color-secondary-dark, 0.85)
+      );
+    }
+
+    &--2 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.85),
+        rgba($color-primary-dark, 0.85)
+      );
+    }
+
+    &--3 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-tertiary-light, 0.85),
+        rgba($color-tertiary-dark, 0.85)
+      );
+    }
+  }
+
+  &__details {
+    padding: 3rem;
+    ul {
+      list-style: none;
+      width: 80%;
+
+      //Centerling the list
+      margin: 0 auto;
+
+      li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid $color-grey-light-2;
+        }
+      }
+    }
+  }
+
+  // BACK SIDE STYLING
+  &__cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center;
+  }
+
+  &__price-box {
+    text-align: center;
+    color: $color-white;
+    margin-bottom: 8rem;
+  }
+
+  &__price-only {
+    font-size: 1.4rem;
+  }
+
+  &__price-value {
+    font-size: 6rem;
+    font-weight: 200;
+  }
+}

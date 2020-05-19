@@ -2,17 +2,41 @@
 $color-primary: #55c57a;
 $color-primary-light: #7ed56f;
 $color-primary-dark: #28b485;
+$cover-image-transparency: 0.8;
 
 /*
 // This look s cooler for me :)
 $color-primary: #06a;
 $color-primary-light: rgb(87, 169, 224);
 $color-primary-dark: rgb(1, 46, 77);
+$cover-image-transparency: 0.7;
 */
+
+$color-secondary-light: #ffb900;
+$color-secondary-dark: #ff7730;
+
+$color-tertiary-light: #2998ff;
+$color-tertiary-dark: #5634fa;
+
+$color-grey-light-1: #f7f7f7;
+$color-grey-light-2: #eee;
 
 $color-grey-dark: #777;
 $color-white: #fff;
 $color-black: #000;
+
+// FONT
+$default-font-size: 1.6rem;
+
+// DIMESIONS
+$card: (
+  // Width
+    100%,
+  // Height
+    52rem,
+  // This value is border radius of the card
+    3rem
+);
 
 // GRID
 $grid-width: 114rem;
